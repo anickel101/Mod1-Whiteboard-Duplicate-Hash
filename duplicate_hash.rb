@@ -1,12 +1,20 @@
-require 'pry'
 
-#test =[1, 2, 2, 3, 3, 4, 5, 5, 5] 
-# output: {1:1, 2:2, 3:2, 4:1, 5:3} 
-
+#This goes through the input array TWICE
 def duplicate_hash(array)
     result = {}
     array.uniq.map {|key| result[key] = array.find_all {|num| num == key}.count}
     result
 end
 
-#binding.pry
+#This goes through the inpur array ONCE -> much better, more faster
+def dup_hash(array)
+    result = {}
+    array.each do |int|
+        if result[int]
+            result[int] += 1
+        else 
+            result[int] = 1
+        end
+    end
+    result
+end
